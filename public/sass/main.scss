@@ -1,0 +1,171 @@
+@import "compass";
+@import "compass/reset";
+
+$digit-width: 50px;
+$digit-height: 80px;
+
+body {
+    width: 100%;
+    background-color: #fef9f0;
+}
+
+#main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    margin-top: 50px;
+}
+
+H1 {
+    font-size: 75px;
+}
+H3 {
+    font-size: 40px;
+}
+
+
+#answer, #hbcount {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+@mixin digit-style($digit-font-size: 75px) {
+    @include inline-block;
+    @include border-radius();
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 1px solid #616161;
+    padding: 0px 0px;
+    width: $digit-width;
+    height: $digit-height;
+    font-size: $digit-font-size;
+    line-height: $digit-height;
+    background: #616161;
+    color: #FFF;
+}
+
+.digit-alph {
+    @include digit-style(65px);
+}
+
+.select-digit {
+    $select-font-size: 50px;
+    font-family:'Lucida Grande', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    @include inline-block;
+    position: relative;
+    select {
+        @include appearance('none');
+        font-size: $select-font-size;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: $digit-width;
+        height: $digit-height;
+        opacity: 0;
+        background: #616161;
+        cursor: pointer;
+    }
+    .selected {
+        @include digit-style();
+        cursor: pointer;
+    }
+}
+
+.button {
+    @include border-radius();
+    @include inline-block;
+    width: 50px * 5;
+    height: 80px;
+	  background-color: #00bcd1;
+	  border: 0px;
+	  cursor: pointer;
+    font-size: 32px;
+	  color: #fff;
+    margin-left: 5px;
+    text-align:center;
+    line-height: 80px;
+}
+
+.button:hover {
+	  background-color:#b0f8ff;
+}
+
+.button:active {
+	  position:relative;
+	  top:1px;
+}
+
+.button-inner {
+    width: 50px * 5;
+    height: 80px;
+    position: absolute;
+    margin: -40px 0 0 -125px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+
+#results {
+    @mixin speech-style($background, $margin-left) {
+        @include border-radius();
+        position: relative;
+        color: #fff;
+        background: $background;
+        font-size: 30pt ;
+        border: 0px;
+        width: 400px;
+        margin: 10px 10px 20px 10px + $margin-left;
+        padding: 10px 5px 10px 10px;
+        border-radius: 3px;
+    }
+
+    $color-left: #76d3de;
+    $margin-left: 0px;
+    .speech-left {
+        @include speech-style($color-left, $margin-left);
+    }
+    .speech-left:after, .speech-left:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 0;
+        width: 0;
+    }
+    .speech-left:after {
+        left: 20px;
+        border: 10px solid transparent;
+        border-top: 10px solid $color-left;
+    }
+    .speech-left:before {
+        left: 19px; 
+        border: 11px solid transparent;
+        border-top: 11px solid $color-left;
+    }
+
+    $color-rigtht: #aee8fb;
+    $margin-left: 50px;
+    .speech-right {
+        @include speech-style($color-rigtht, $margin-left);
+    }
+    .speech-right:after, .speech-right:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 0;
+        width: 0;
+    }
+    .speech-right:after {
+        left: 370px;
+        border: 10px solid transparent;
+        border-top: 10px solid $color-rigtht;
+    }
+    .speech-right:before {
+        left: 369px; 
+        border: 11px solid transparent;
+        border-top: 11px solid $color-rigtht;
+    }
+}

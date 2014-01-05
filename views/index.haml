@@ -1,0 +1,35 @@
+%div#main
+  %div#title
+    %H1 HAB1
+  %div#answer
+    - 1.upto(4) do |i|
+      %div.select-digit
+        %div.selected
+          %span
+        %select{:id => 'digit'+i.to_s}
+          - 0.upto(9) do |j|
+            %option #{j}
+    %div#expect_btn.button
+      候補を表示
+  %div#hbcount
+    %div.digit-alph
+      H
+    %div.select-digit
+      %div.selected
+        %span
+      %select#hit
+        - 0.upto(4) do |i|
+          %option #{i}
+    %div.digit-alph
+      B
+    %div.select-digit
+      %div.selected
+        %span
+      %select#blow
+        - 0.upto(4) do |i|
+          %option #{i}
+    %div#takein_btn.button
+      結果を取込
+  %div#result
+    %H3 History
+    %div#results
