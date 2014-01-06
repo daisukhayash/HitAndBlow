@@ -9,7 +9,7 @@ $LOAD_PATH.unshift(File.join File.dirname(__FILE__), 'lib')
 require 'hitandblow/solver'
 
 set :haml, :format => :html5
-set :hab, HitAndBlow::Solver.new 100.0, 25.0
+set :hab, HitAndBlow::Solver.new(100.0, 25.0)
 
 before do
   @title = 'Hit & Blow'
@@ -20,6 +20,7 @@ before '/*.json' do
 end
 
 get '/' do
+  settings.hab = HitAndBlow::Solver.new(100.0, 25.0)
   haml :index
 end
 
