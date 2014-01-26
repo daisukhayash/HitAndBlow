@@ -539,5 +539,9 @@ module HitAndBlow
     def feedback answer, hit, blow
       @candidate.take_in_answer answer, hit.to_i, blow.to_i
     end
+
+    def candidate
+      @candidate.map(&:numbers)
+    end
   end
 end

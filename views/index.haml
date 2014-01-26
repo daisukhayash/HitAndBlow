@@ -6,7 +6,7 @@
       %div.select-digit
         %div.selected
           %span
-        %select{:id => 'digit'+i.to_s}
+        %select{ :id => 'digit' + i.to_s }
           - 0.upto(9) do |j|
             %option #{j}
     %div#expect_btn.button
@@ -30,6 +30,33 @@
           %option #{i}
     %div#takein_btn.button
       結果を取込
+  %div#matrix
+    - 1.upto(4) do |i|
+      %div{ :id => 'matrix' + i.to_s }
+        %div.matrix_panel.top.left.num7
+          %p 7
+        %div.matrix_panel.top.mid.num8
+          %p 8
+        %div.matrix_panel.top.right.num9
+          %p 9
+        %div.matrix_panel.main.left.num4
+          %p 4
+        %div.matrix_panel.main.mid.num5
+          %p 5
+        %div.matrix_panel.main.right.num6
+          %p 6
+        %div.matrix_panel.bottom.left.num1
+          %p 1
+        %div.matrix_panel.bottom.mid.num2
+          %p 2
+        %div.matrix_panel.bottom.right.num3
+          %p 3
+        %div.matrix_panel.zero.left.num_nul
+          %p -
+        %div.matrix_panel.zero.mid.num0
+          %p 0
+        %div.matrix_panel.zero.right.num_nul
+          %p -
   %div#result
     %H3 History
     %div#results

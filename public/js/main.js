@@ -6,6 +6,10 @@ String.prototype.htmlEscape = function(){
     return span.innerHTML;
 };
 
+$(function(){
+    $('#title').click(function(){window.location = '/'});
+});
+
 var turn = '';
 var toggle_lr = function(){
     if(turn == ''){
@@ -51,7 +55,10 @@ var takein = function(){
                div.addClass(toggle_lr());
                $('div#results').prepend(div);
            });
+
     clear_digits();
+
+    set_matrix();
 }
 
 $(function(){
@@ -72,3 +79,25 @@ var expect = function(){
                   set_digits('#digit4', Number(res.answer[3]));
               });
 };
+
+var set_matrix = function(){
+    $.getJSON('/candidate.json',
+              function(res){
+                  set_a_matrix('#matrix1', res.candidate[0]);
+                  set_a_matrix('#matrix2', res.candidate[1]);
+                  set_a_matrix('#matrix3', res.candidate[2]);
+                  set_a_matrix('#matrix4', res.candidate[3]);
+              });
+}
+var set_a_matrix = function(id, ary){
+    console.log(ary);
+    for(i = 0; i < 10; i++){
+        $(id).find('.num'+i).removeClass('living');
+        if($.inArray(i, ary) >= 0){
+            console.log($(id).find('.nums'+i));
+            $(id).find('.num'+i).addClass('living');
+        }
+    }
+}
+
+set_matrix();

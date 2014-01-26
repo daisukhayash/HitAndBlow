@@ -6,7 +6,7 @@ $digit-height: 80px;
 
 body {
     width: 100%;
-    background-color: #fef9f0;
+    background: #fef9f0;
 }
 
 #main {
@@ -23,6 +23,9 @@ H3 {
     font-size: 40px;
 }
 
+#title {
+	  cursor: pointer;
+}
 
 #answer, #hbcount {
     position: relative;
@@ -80,7 +83,7 @@ H3 {
     @include inline-block;
     width: 50px * 5;
     height: 80px;
-	  background-color: #00bcd1;
+	  background: #00bcd1;
 	  border: 0px;
 	  cursor: pointer;
     font-size: 32px;
@@ -91,7 +94,7 @@ H3 {
 }
 
 .button:hover {
-	  background-color:#b0f8ff;
+	  background:#b0f8ff;
 }
 
 .button:active {
@@ -99,14 +102,31 @@ H3 {
 	  top:1px;
 }
 
-.button-inner {
-    width: 50px * 5;
-    height: 80px;
-    position: absolute;
-    margin: -40px 0 0 -125px;
-    top: 50%;
-    left: 50%;
-    text-align: center;
+#matrix {
+    #matrix1, #matrix2, #matrix3, #matrix4 {
+        @include inline-block;
+        width: 20%;
+    }
+    .top, .main, .bottom, .zero {
+        @include inline-block;
+    }
+    .matrix_panel {
+        @include border-radius(17px);
+        text-align: center;
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+        color: #FFF;
+        background: #616161;
+        margin-top: 1px;
+    }
+    .num_nul {
+        color : #fef9f0;
+        background: #fef9f0;
+    }
+    .living {
+	      background: #00bcd1;
+    }
 }
 
 #results {

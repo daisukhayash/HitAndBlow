@@ -24,13 +24,24 @@ get '/' do
   haml :index
 end
 
-get '/*.css' do |path|
-  scss path.to_sym
+get '/css/main.css' do
+  scss :'/scss/main.scss'
 end
 
 get '/expect.json' do
   @mes = {
     :answer => settings.hab.expect
+  }.to_json
+end
+
+get '/candidate.json' do
+  @mes = {
+    :candidate => [
+                   settings.hab.candidate[0],
+                   settings.hab.candidate[1],
+                   settings.hab.candidate[2],
+                   settings.hab.candidate[3]
+                   ]
   }.to_json
 end
 
