@@ -36,6 +36,12 @@ var clear_digits = function(){
     set_digits('#blow', 0);
 }
 
+var add_history = function(answer, hit, blow){
+    var div = $('<div>').append(answer.htmlEscape() + ' Hit:' + hit.htmlEscape() + ' Blow:' + blow.htmlEscape());
+    div.addClass(toggle_lr());
+    $('div#results').prepend(div);
+}
+
 $(function(){
     $('#takein_btn').click(takein);
 });
@@ -51,14 +57,11 @@ var takein = function(){
              blow: blow
            },
            function(res){
-               var div = $('<div>').append(answer.htmlEscape() + ' Hit:' + hit.htmlEscape() + ' Blow:' + blow.htmlEscape());
-               div.addClass(toggle_lr());
-               $('div#results').prepend(div);
+               add_history(answer, hit, blow);
+               set_matrix();
+               clear_digits();
            });
 
-    clear_digits();
-
-    set_matrix();
 }
 
 $(function(){
@@ -100,4 +103,4 @@ var set_a_matrix = function(id, ary){
     }
 }
 
-set_matrix();
+$(set_matrix());
